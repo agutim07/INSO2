@@ -23,6 +23,8 @@ public interface RolesFacadeLocal {
     void remove(Roles roles);
 
     Roles find(Object id);
+    
+    Roles findByDesc(String desc);
 
     List<Roles> findAll();
 

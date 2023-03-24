@@ -5,6 +5,7 @@
  */
 package EJB;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,17 @@ public class RolesFacade extends AbstractFacade<Roles> implements RolesFacadeLoc
 
     public RolesFacade() {
         super(Roles.class);
+    }
+    
+    public Roles findByDesc(String desc){
+        List<Roles> allRoles = findAll();
+        for(int i=0; i<allRoles.size(); i++){
+            if(allRoles.get(i).getDescripcion().equals(desc)){
+                return allRoles.get(i);
+            }
+        }
+        
+        return null;
     }
     
 }

@@ -34,7 +34,6 @@ public class AltaCategoriaController implements Serializable{
     }
     
     public void insertarCategoria(){
-        System.out.println("hola");
         try{
             categoriasEJB.create(cat);
         }catch(Exception e){

@@ -10,6 +10,7 @@
     <h:outputScript library="js" name="spanishcalendar.js"/>
     <h:body>
         <h:form>
+            <p:messages id="messageId"/>
             <h1 style="margin-top:0">Alta de nuevo usuario</h1>
             <p:panelGrid id="grid" columns="2" 
                  layout="grid"
@@ -45,10 +46,8 @@
             <p:fieldset legend="Datos de acceso">
                 <p:panelGrid columns="3">
                     <p:outputLabel for="rol" value="Rol:"/>
-                    <p:selectOneMenu id="rol" value="#{altaUsuarioController.rol.tipoUsuario}">
-                        <f:selectItem itemLabel="Profesor" itemValue="P"/>
-                        <f:selectItem itemLabel="Alumno" itemValue="A"/>
-                        <f:selectItem itemLabel="Superusuario" itemValue="O"/>
+                    <p:selectOneMenu id="rol" value="#{altaUsuarioController.rol}">
+                        <f:selectItems value="#{altaUsuarioController.roles}"/>
                     </p:selectOneMenu>
                     <div/>
                     
@@ -68,7 +67,7 @@
             </p:panelGrid>
             
             <p:panelGrid columns="1" layout="grid" style="width:100%; text-align:center;" styleClass="showcase-text-align-center">
-                <p:commandButton id="submitButton" icon="pi pi-check" actionListener="#{altaUsuarioController.altaUsuario()}" value="Registrar" update="grid" styleClass="mt-3" />
+                <p:commandButton id="submitButton" icon="pi pi-check" actionListener="#{altaUsuarioController.insertarUsuario()}" value="Registrar" update="grid" styleClass="mt-3" />
             </p:panelGrid>
         </h:form>
     </h:body>
