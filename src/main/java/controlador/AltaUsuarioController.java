@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Objects;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import modelo.Personas;
@@ -63,7 +65,9 @@ public class AltaUsuarioController implements Serializable{
             
             try{
                 usuariosEJB.create(user);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro correcto", "Usuario registrado correctamente"));
             }catch(Exception e){
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error al registrar", "Error al registrar el usuario"));
                 System.out.println("Error al insertar el usuario "+e.getMessage());
             }
     }
