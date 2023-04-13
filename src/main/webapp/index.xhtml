@@ -11,28 +11,25 @@
     <h:body>
         <h:form>
             <h1 style="margin-top:0">Inicio de sesión</h1>
-            <p:panelGrid id="grid" columns="3" 
+            <p:panelGrid id="grid" columns="1" 
                  layout="grid"
-                 styleClass="ui-panelgrid-blank ui-fluid"
-                 style="border:0px none; background-color:transparent;">
-                <div />
+                 styleClass="ui-panelgrid-blank ui-fluid" 
+                 style="border:0px none; background-color:transparent; width: 50%; margin: 0 auto;">
                 <p:fieldset legend="Credenciales">
                     <p:panelGrid columns="3">
                         <p:outputLabel for="username" value="Nombre de usuario:"/>
-                        <p:inputText required="true" requiredMessage="Obligatorio" id="username" value="#{altaUsuarioController.persona.nombrePersona}"/>
+                        <p:inputText required="true" requiredMessage="Obligatorio" id="username" value="#{indexController.user.user}"/>
                         <p:message for="username"/>
 
                         <p:outputLabel for="pass" value="Contraseña:"/>
-                        <p:password id="pass" required="true" requiredMessage="Obligatorio" value="#{altaUsuarioController.user.password}" toggleMask="true" redisplay="true"/>
+                        <p:password id="pass" required="true" requiredMessage="Obligatorio" value="#{indexController.user.password}" toggleMask="true" redisplay="true"/>
                         <p:message for="pass"/>
                     </p:panelGrid>
                 </p:fieldset>
-                <div />
             </p:panelGrid>
             
             <p:panelGrid id="grid2" columns="1" layout="grid" style="width:100%; text-align:center;" styleClass="showcase-text-align-center">
-                <p:commandButton id="submitButton" icon="pi pi-sign-in" actionListener="#{altaUsuarioController.insertarUsuario()}" value="Iniciar sesión" update="grid,grid2" styleClass="mt-3" />
-                <p:messages id="messageId" severity="info,fatal"/>
+                <p:commandButton id="submitButton" icon="pi pi-sign-in" action="#{indexController.verificarUsuario()}" value="Iniciar sesión" update="grid,grid2" styleClass="mt-3" />
             </p:panelGrid>
         </h:form>
     </h:body>

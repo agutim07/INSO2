@@ -30,6 +30,7 @@ public class RolesFacade extends AbstractFacade<Roles> implements RolesFacadeLoc
         super(Roles.class);
     }
     
+    @Override
     public Roles findByDesc(String desc){
         List<Roles> allRoles = findAll();
         for(int i=0; i<allRoles.size(); i++){
