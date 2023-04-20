@@ -8,7 +8,7 @@
 
     <body>
 
-        <ui:composition template="./../WEB-INF/template/plantillaPublicaciones.xhtml">
+        <ui:composition template="./../../WEB-INF/template/plantillaPublicaciones.xhtml">
 
             <ui:define name="content">
                 <h:head>
@@ -72,7 +72,7 @@
                             </p:fieldset>
                         </p:panelGrid>
 
-                        <p:panelGrid id="grid2" columns="1" layout="grid" style="width:100%; text-align:center;" styleClass="showcase-text-align-center">
+                        <p:panelGrid id="grid2" columns="1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="border:0px none; background-color:transparent; width: 15%; margin: 0 auto;">
                             <p:commandButton id="submitButton" icon="pi pi-check" actionListener="#{altaUsuarioController.insertarUsuario()}" value="Registrar" update="grid,grid2" styleClass="mt-3" />
                             <p:messages id="messageId" severity="info,fatal"/>
                         </p:panelGrid>

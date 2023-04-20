@@ -4,13 +4,16 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
     <h:head>
+        <h:outputStylesheet library="css" name="index.css"/>
         <title>Iniciar sesión</title>
     </h:head>
     <h:outputScript library="js" name="spanishcalendar.js"/>
-    <h:body>
+    <h:body id="principal">
         <h:form>
             <h1 style="margin-top:0">Inicio de sesión</h1>
+            <div id="usuario">
             <p:panelGrid id="grid" columns="1" 
                  layout="grid"
                  styleClass="ui-panelgrid-blank ui-fluid" 
@@ -27,10 +30,11 @@
                     </p:panelGrid>
                 </p:fieldset>
             </p:panelGrid>
-            
-            <p:panelGrid id="grid2" columns="1" layout="grid" style="width:100%; text-align:center;" styleClass="showcase-text-align-center">
+                
+            <p:panelGrid id="grid2" columns="1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="border:0px none; background-color:transparent; width: 15%; margin: 0 auto;">
                 <p:commandButton id="submitButton" icon="pi pi-sign-in" action="#{indexController.verificarUsuario()}" value="Iniciar sesión" update="grid,grid2" styleClass="mt-3" />
             </p:panelGrid>
+            </div>
         </h:form>
     </h:body>
 </html>

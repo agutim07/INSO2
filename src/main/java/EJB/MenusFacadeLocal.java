@@ -8,6 +8,7 @@ package EJB;
 import java.util.List;
 import javax.ejb.Local;
 import modelo.Menus;
+import modelo.Usuarios;
 
 /**
  *
@@ -25,6 +26,8 @@ public interface MenusFacadeLocal {
     Menus find(Object id);
 
     List<Menus> findAll();
+    
+    List<Menus> obtenerMenusUsuario(Usuarios us);
 
     List<Menus> findRange(int[] range);
 

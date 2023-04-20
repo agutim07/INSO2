@@ -18,12 +18,15 @@
 
         <div id="top" class="top">
             <ui:insert name="top">
-                <h:form>
-                <p:panelGrid columns="2" layout="grid" style="width:100%; text-align:center;" styleClass="showcase-text-align-center">
-                    <p:commandButton actionListener="#{plantillaController.redirect(0)}" value="Inicio" styleClass="mt-3"/>
-                    <p:commandButton actionListener="#{plantillaController.redirect(1)}" value="Alta Usuario" styleClass="mt-3"/>
+                <p:panelGrid columns="1" layout="grid" style="width:100%; text-align:center;" styleClass="showcase-text-align-center">
+                    <p:menubar model="#{menuController.modelo}">
+                        <f:facet name="options">
+                            <h:form>
+                            <p:commandButton value="Cerrar sesión" actionListener="#{menuController.destruirSesion()}" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+                            </h:form>
+                        </f:facet>
+                    </p:menubar>
                 </p:panelGrid>
-                </h:form>
             </ui:insert>
         </div>
         

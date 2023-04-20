@@ -11,6 +11,7 @@ import java.util.Objects;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import modelo.Categorias;
 
@@ -24,13 +25,15 @@ import modelo.Categorias;
 
 public class AltaCategoriaController implements Serializable{
     
+    @Inject
     private Categorias cat;
+    
     @EJB
     private CategoriasFacadeLocal categoriasEJB;
     
     @PostConstruct
     public void init(){
-        cat = new Categorias();
+        
     }
     
     public void insertarCategoria(){
