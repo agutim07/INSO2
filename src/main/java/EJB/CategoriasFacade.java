@@ -5,6 +5,7 @@
  */
 package EJB;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,18 @@ public class CategoriasFacade extends AbstractFacade<Categorias> implements Cate
 
     public CategoriasFacade() {
         super(Categorias.class);
+    }
+    
+    @Override
+    public Categorias findByName(String name){
+        List<Categorias> allCats = findAll();
+        for(int i=0; i<allCats.size(); i++){
+            if(allCats.get(i).getNombreCategoria().equals(name)){
+                return allCats.get(i);
+            }
+        }
+        
+        return null;
     }
     
 }

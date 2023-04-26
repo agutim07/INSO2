@@ -60,16 +60,16 @@ public class AltaUsuarioController implements Serializable{
     }
     
     public void insertarUsuario(){
-            user.setRol(rolesEJB.findByDesc(rol));
-            user.setPersona(persona);
-            
-            try{
-                usuariosEJB.create(user);
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro correcto", "Usuario registrado correctamente"));
-            }catch(Exception e){
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error al registrar", "Error al registrar el usuario"));
-                System.out.println("Error al insertar el usuario "+e.getMessage());
-            }
+        user.setRol(rolesEJB.findByDesc(rol));
+        user.setPersona(persona);
+
+        try{
+            usuariosEJB.create(user);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro correcto", "Usuario registrado correctamente"));
+        }catch(Exception e){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error al registrar", "Error al registrar el usuario"));
+            System.out.println("Error al insertar el usuario "+e.getMessage());
+        }
     }
 
     public Usuarios getUser() {

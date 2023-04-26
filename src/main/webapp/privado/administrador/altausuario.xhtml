@@ -73,8 +73,10 @@
                         </p:panelGrid>
 
                         <p:panelGrid id="grid2" columns="1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="border:0px none; background-color:transparent; width: 15%; margin: 0 auto;">
-                            <p:commandButton id="submitButton" icon="pi pi-check" actionListener="#{altaUsuarioController.insertarUsuario()}" value="Registrar" update="grid,grid2" styleClass="mt-3" />
-                            <p:messages id="messageId" severity="info,fatal"/>
+                            <p:commandButton id="submitButton" icon="pi pi-user-plus" actionListener="#{altaUsuarioController.insertarUsuario()}" value="Registrar" update="grid,grid2,grid3" styleClass="mt-3" />
+                        </p:panelGrid>
+                        <p:panelGrid id="grid3" columns="1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="border:0px none; background-color:transparent; width: 40%; margin: 0 auto;">
+                            <p:messages id="messageId" severity="info,fatal" closable="true"/>
                         </p:panelGrid>
                     </h:form>
                 </h:body>

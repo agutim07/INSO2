@@ -26,13 +26,4 @@ public class PlantillaController implements Serializable{
             FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getApplicationContextPath()+"/publico/permisosinsuficientes.xhtml?faces-redirect=true");
         }
     }
-    
-    public void redirect(int op) throws IOException{
-        if(op==1){
-            FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getApplicationContextPath()+"/faces/privado/altausuario.xhtml?faces-redirect=true");
-            return;
-        }
-        
-        FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getApplicationContextPath()+"/faces/privado/principal.xhtml?faces-redirect=true");
-    }
 }

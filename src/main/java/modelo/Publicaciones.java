@@ -43,7 +43,7 @@ public class Publicaciones implements Serializable{
     private String comentarioProfesor;
     
     @Column(name="valoracion")
-    private char valoracion;
+    private int valoracion;
     
     @Column(name="fecha")
     @Temporal(TemporalType.DATE)
@@ -89,11 +89,11 @@ public class Publicaciones implements Serializable{
         this.comentarioProfesor = comentarioProfesor;
     }
 
-    public char getValoracion() {
+    public int getValoracion() {
         return valoracion;
     }
 
-    public void setValoracion(char valoracion) {
+    public void setValoracion(int valoracion) {
         this.valoracion = valoracion;
     }
 

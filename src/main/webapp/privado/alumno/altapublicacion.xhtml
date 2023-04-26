@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/template/plantillaPublicaciones.xhtml">
+
+            <ui:define name="content">
+                <h:head>
+                    <title>Nueva publicación</title>
+                </h:head>
+                <h:body>
+                    <h:form>
+                        <h1 style="margin-top:0">Alta de nueva publicación</h1>
+                        <p:panelGrid id="grid" columns="1" 
+                        layout="grid"
+                        styleClass="ui-panelgrid-blank ui-fluid" 
+                        style="border:0px none; background-color:transparent; width: 50%; margin: 0 auto;">
+                            <p:fieldset legend="Datos de la publicación">
+                                <p:panelGrid columns="3">
+                                    <p:outputLabel for="titulo" value="Título:"/>
+                                    <p:inputText id="titulo" required="true" requiredMessage="Obligatorio" value="#{altaPublicacionController.publicacion.titulo}"/>
+                                    <p:message for="titulo"/>
+                                    
+                                    <p:outputLabel for="cat" value="Categoría:"/>
+                                    <p:selectOneMenu id="cat" value="#{altaPublicacionController.categoria}">
+                                        <f:selectItems value="#{altaPublicacionController.categorias}"/>
+                                    </p:selectOneMenu>
+                                    <div/> 
+
+                                    <p:outputLabel for="cuerpo" value="Cuerpo:"/>
+                                    <p:inputTextarea rows="6" cols="33" id="cuerpo" required="true" requiredMessage="Obligatorio" value="#{altaPublicacionController.publicacion.cuerpo}"/>
+                                    <p:message for="cuerpo"/>
+                                </p:panelGrid>
+                            </p:fieldset>
+                        </p:panelGrid>
+
+                        <p:panelGrid id="grid2" columns="1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="border:0px none; background-color:transparent; width: 15%; margin: 0 auto;">
+                            <p:commandButton id="submitButton" icon="pi pi-plus" actionListener="#{altaPublicacionController.insertarPublicacion()}" value="Añadir" update="grid,grid2,grid3" styleClass="mt-3" />
+                        </p:panelGrid>
+                        <p:panelGrid id="grid3" columns="1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="border:0px none; background-color:transparent; width: 40%; margin: 0 auto;">
+                            <p:messages id="messageId" severity="info,fatal" closable="true"/>
+                        </p:panelGrid>
+                    </h:form>
+                </h:body>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
