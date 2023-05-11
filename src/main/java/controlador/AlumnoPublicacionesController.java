@@ -16,6 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import modelo.Publicaciones;
+import modelo.Usuarios;
 
 /**
  *
@@ -25,7 +26,7 @@ import modelo.Publicaciones;
 @Named
 @RequestScoped
 
-public class ListaPublicacionesController {
+public class AlumnoPublicacionesController {
     private List<Publicaciones> publicaciones;
     private Publicaciones publicacion;
     
@@ -34,7 +35,8 @@ public class ListaPublicacionesController {
     
     @PostConstruct
     public void init(){
-        List<Publicaciones> allPubs = publicacionesEJB.findAll();
+        Usuarios us = (Usuarios) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        List<Publicaciones> allPubs = publicacionesEJB.obtenerPublicacionesUsuario(us);
         setPublicaciones(allPubs);
     }
     
@@ -45,7 +47,8 @@ public class ListaPublicacionesController {
     public void eliminarPublicacion(Publicaciones pub){
         try{
             publicacionesEJB.remove(pub);
-            setPublicaciones(publicacionesEJB.findAll());
+            Usuarios us = (Usuarios) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+            setPublicaciones(publicacionesEJB.obtenerPublicacionesUsuario(us));
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminación correcta", "Publicación eliminada con éxito"));
         }catch(Exception e){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error al eliminar", "Error al eliminar la publicación"));
@@ -97,7 +100,7 @@ public class ListaPublicacionesController {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ListaPublicacionesController other = (ListaPublicacionesController) obj;
+        final AlumnoPublicacionesController other = (AlumnoPublicacionesController) obj;
         if (!Objects.equals(this.publicaciones, other.publicaciones)) {
             return false;
         }

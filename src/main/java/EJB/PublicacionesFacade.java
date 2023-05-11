@@ -5,10 +5,14 @@
  */
 package EJB;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import modelo.Categorias;
 import modelo.Publicaciones;
+import modelo.Usuarios;
 
 /**
  *
@@ -27,6 +31,28 @@ public class PublicacionesFacade extends AbstractFacade<Publicaciones> implement
 
     public PublicacionesFacade() {
         super(Publicaciones.class);
+    }
+    
+    @Override
+    public List<Publicaciones> obtenerPublicacionesUsuario(Usuarios us){
+        String consulta = "FROM Publicaciones p WHERE p.persona.idPersona=:param1";
+        Query query = em.createQuery(consulta);
+        
+        query.setParameter("param1", us.getPersona().getIdPersona());
+        List<Publicaciones> resultado = query.getResultList();
+        
+        return resultado;
+    }
+    
+    @Override
+    public List<Publicaciones> obtenerPublicacionesCategoria(Categorias cat){
+        String consulta = "FROM Publicaciones p WHERE p.categoria.idCategoria=:param1";
+        Query query = em.createQuery(consulta);
+        
+        query.setParameter("param1", cat.getIdCategoria());
+        List<Publicaciones> resultado = query.getResultList();
+        
+        return resultado;
     }
     
 }

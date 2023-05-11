@@ -7,7 +7,9 @@ package EJB;
 
 import java.util.List;
 import javax.ejb.Local;
+import modelo.Categorias;
 import modelo.Publicaciones;
+import modelo.Usuarios;
 
 /**
  *
@@ -27,6 +29,10 @@ public interface PublicacionesFacadeLocal {
     List<Publicaciones> findAll();
 
     List<Publicaciones> findRange(int[] range);
+    
+    List<Publicaciones> obtenerPublicacionesUsuario(Usuarios us);
+    
+    List<Publicaciones> obtenerPublicacionesCategoria(Categorias cat);
 
     int count();
     
